@@ -22,3 +22,5 @@ GET_RELATIONSHIP random Son
 GET_RELATIONSHIP random Daughter
 GET_RELATIONSHIP random Paternal-Aunt
 GET_RELATIONSHIP random Maternal-Aunt
+random random random
+GET_RELATIONSHIP random random

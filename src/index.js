@@ -68,6 +68,3 @@ processArgs(args);
 
 loadInitialFamilyTree();
 startProcessing();
-
-
-
