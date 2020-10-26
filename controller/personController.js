@@ -298,7 +298,7 @@ const getRelationship = (relationItems) => {
         case 'Siblings':
             return findSiblings(relationItems[1]);
         default:
-            return "PERSON_NOT_FOUND";
+            return "RELATION_NOT_FOUND";
     }
 }
 

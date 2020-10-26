@@ -260,6 +260,12 @@ describe("testing getRelationship function", () => {
         expect(res).toEqual("PERSON_NOT_FOUND");
     });
 
+    it("will call getRelationship to find unknown of Louis", () => {
+        actionItems=["GET_RELATIONSHIP", "Louis", "unknown"];
+        let res = personController.getRelationship(actionItems);
+        expect(res).toEqual("RELATION_NOT_FOUND");
+    });
+
     // Daughter
     it("will call getRelationship to find daughter of Flora and it will include Lola", () => {
         actionItems=["GET_RELATIONSHIP", "Flora", "Daughter"];
@@ -284,7 +290,7 @@ describe("testing getRelationship function", () => {
     it("will call getRelationship to find randon of non existant person", () => {
         actionItems=["GET_RELATIONSHIP", "RANDOM", "randon"];
         let res = personController.getRelationship(actionItems);
-        expect(res).toEqual("PERSON_NOT_FOUND");
+        expect(res).toEqual("RELATION_NOT_FOUND");
     });
 
     it("will call getRelationship to find Daughters Percy", () => {
@@ -315,7 +321,7 @@ describe("testing getRelationship function", () => {
     it("will call getRelationship to find randon of non existant person", () => {
         actionItems=["GET_RELATIONSHIP", "RANDOM", "randon"];
         let res = personController.getRelationship(actionItems);
-        expect(res).toEqual("PERSON_NOT_FOUND");
+        expect(res).toEqual("RELATION_NOT_FOUND");
     });
 
     it("will call getRelationship to find Sons Harry", () => {
