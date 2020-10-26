@@ -64,7 +64,8 @@ async function startProcessing() {
 }
 
 const args = process.argv.slice(2);
-processArgs(args);
 
-loadInitialFamilyTree();
-startProcessing();
+if (processArgs(args)){
+    loadInitialFamilyTree();
+    startProcessing();
+}

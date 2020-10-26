@@ -16,17 +16,17 @@ function usage() {
 }
 
 function processArgs(args) {
-    
     if ( args.length < 1 || args.length > 1){
         usage();
-        process.exit(1);
+        return false;
     }
     
     if (!fr.existsSync(args[0])) {
         console.log("\nError: File '" + args[0] + "' is invalid");
         usage();
-        process.exit(1);
+        return false;
     }
+    return true;
 }
 
 module.exports = {
