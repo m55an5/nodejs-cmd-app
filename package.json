@@ -4,7 +4,7 @@
   "description": "family tree js cmd app",
   "main": "src/index.js",
   "bin": {
-    "family-tree-test": "src/index.js"
+    "family-tree-cli": "src/index.js"
   },
   "publishConfig": {
     "access": "public"
