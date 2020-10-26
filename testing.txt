@@ -13,3 +13,12 @@ GET_RELATIONSHIP Percy Sister-in-Law
 GET_RELATIONSHIP Bill Son
 GET_RELATIONSHIP Bill Daughter
 GET_RELATIONSHIP Flora Siblings
+GET_RELATIONSHIP random Siblings
+GET_RELATIONSHIP random Brother-in-Law
+GET_RELATIONSHIP random Sister-in-Law
+GET_RELATIONSHIP random Paternal-Uncle
+GET_RELATIONSHIP random Maternal-Uncle
+GET_RELATIONSHIP random Son
+GET_RELATIONSHIP random Daughter
+GET_RELATIONSHIP random Paternal-Aunt
+GET_RELATIONSHIP random Maternal-Aunt
