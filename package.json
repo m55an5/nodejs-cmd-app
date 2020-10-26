@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-cmd-app",
+  "version": "1.0.0",
+  "description": "family tree js cmd app",
+  "main": "src/index.js",
+  "bin": {
+    "family-tree-test": "src/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m55an5/nodejs-cmd-app.git"
+  },
+  "author": "Manjot Sandhu",
+  "license": "ISC"
+}
