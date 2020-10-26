@@ -1,5 +1,10 @@
 # nodejs-cmd-app
 
+Assumption: 
+
+1. If the text file contains: <b>NO_FUNCTION</b> Luna Lola Female then the INVALID will be written to the console
+2. If the text file container: <b>NO_RELATIONSHIP</b> Minerva Siblings then INVALID_RELATIONSHIP will be written to the console
+
 ## Clone Git Repository or Download Code ( inside folder where you want the code ) 
 https://github.com/m55an5/nodejs-cmd-app
 
