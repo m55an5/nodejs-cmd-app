@@ -32,8 +32,7 @@ function performActions(arrItems){
                 console.log(result);
                 break;
             default:
-                // console.log(`Invalid command "${actionItem[0]}"`+
-                            // ` in ${actionItem.join(" ")}`);
+                console.log("INVALID")
                 break;
         }
     }

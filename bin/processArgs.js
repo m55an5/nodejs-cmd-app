@@ -17,13 +17,15 @@ function usage() {
 
 function processArgs(args) {
     if ( args.length < 1 || args.length > 1){
-        usage();
+        process.env.NODE_ENV !== 'test' ? usage() : null;
         return false;
     }
     
     if (!fr.existsSync(args[0])) {
-        console.log("\nError: File '" + args[0] + "' is invalid");
-        usage();
+        process.env.NODE_ENV !== 'test' 
+                ? console.log("\nError: File '" + args[0] + "' is invalid")
+                : null;
+        process.env.NODE_ENV !== 'test' ? usage() : null;
         return false;
     }
     return true;

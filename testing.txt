@@ -24,3 +24,7 @@ GET_RELATIONSHIP random Paternal-Aunt
 GET_RELATIONSHIP random Maternal-Aunt
 random random random
 GET_RELATIONSHIP random random
+GET_RELATIONSHIP Charlie Son
+GET_RELATIONSHIP Charlie Daughter
+GET_RELATIONSHIP Flora Paternal-Uncle
+GET_RELATIONSHIP Flora Maternal-Uncle

@@ -2,7 +2,7 @@ let Person = require("../model/Person");
 const { generateID } = require('./../bin/util');
 const { startLoadInitialFamilyTree } = require('./../data/initialData');
 
-const familyMembers = [];
+let familyMembers = [];
 
 const getUserObjByName = (pName) => {
     return familyMembers.filter((person) => {
@@ -22,9 +22,8 @@ const getUserObjById = (id) => {
 
 const getFatherObjectByPersonName = (pName) => {
     const currentPersonObj = getUserObjByName(pName)[0];
-    if (currentPersonObj== undefined){return "NONE";}
     const currentPersonMother = getUserObjByName(currentPersonObj.motherName)[0];
-
+    if (currentPersonMother== undefined){return "NONE";}
     const father = familyMembers.filter((member) => {
         if (member.partner === currentPersonMother.id) {
             return member;
@@ -67,7 +66,7 @@ const addChild = (childItems) => {
 
 const findSiblings = (pName) => {
     const person = getUserObjByName(pName)[0];
-    if (person === undefined) {return "NONE";}
+    if (person === undefined) {return "PERSON_NOT_FOUND";}
     const personMother = getUserObjByName(person.motherName)[0];
     if ((personMother !== undefined) && (personMother.hasOwnProperty('children')) ){
         let siblings = personMother.children.filter((child) => {
@@ -119,6 +118,8 @@ const findFemaleSiblings = (pName) => {
 }
 
 const findMaternalUncles = (pName) => {
+    const person = getUserObjByName(pName)[0];
+    if (person === undefined) {return "PERSON_NOT_FOUND";}
     const motherArr = getMotherObjectByPersonName(pName);
     if (motherArr.length > 0) {
         return findMaleSiblings(motherArr[0].name);
@@ -128,6 +129,8 @@ const findMaternalUncles = (pName) => {
 
 
 const findPaternalUncles = (pName) => {
+    const person = getUserObjByName(pName)[0];
+    if (person === undefined) {return "PERSON_NOT_FOUND";}
     const fatherArr = getFatherObjectByPersonName(pName);
     if (fatherArr.length > 0) {
         return findMaleSiblings(fatherArr[0].name);
@@ -136,6 +139,8 @@ const findPaternalUncles = (pName) => {
 }
 
 const findMaternalAunts = (pName) => {
+    const person = getUserObjByName(pName)[0];
+    if (person === undefined) {return "PERSON_NOT_FOUND";}
     const motherArr = getMotherObjectByPersonName(pName);
     if (motherArr.length > 0) {
         return findFemaleSiblings(motherArr[0].name);
@@ -144,6 +149,8 @@ const findMaternalAunts = (pName) => {
 }
 
 const findPaternalAunts = (pName) => {
+    const person = getUserObjByName(pName)[0];
+    if (person === undefined) {return "PERSON_NOT_FOUND";}
     const fatherArr = getFatherObjectByPersonName(pName);
     if (fatherArr.length > 0) {
         return findFemaleSiblings(fatherArr[0].name);
@@ -168,9 +175,8 @@ const getSpouseObjectByPerson = (person) => {
 const findSisterInLaw = (pName) => {
     const personObject = getUserObjByName(pName)[0];
 
-    if (personObject === undefined) {
-        return "NONE";
-    }
+    if (personObject === undefined) {return "PERSON_NOT_FOUND";}
+
     const spouseObject = getSpouseObjectByPerson(personObject);
     let sisterInLaws = [];
 
@@ -198,9 +204,8 @@ const findSisterInLaw = (pName) => {
 const findBrotherInLaw = (pName) => {
     const personObject = getUserObjByName(pName)[0];
 
-    if (personObject === undefined) {
-        return "NONE";
-    }
+    if (personObject === undefined) {return "PERSON_NOT_FOUND";}
+
     const spouseObject = getSpouseObjectByPerson(personObject);
     let brotherInLaws = [];
 
@@ -230,15 +235,13 @@ const findSon = (pName) => {
     const personObject = getUserObjByName(pName)[0];
     let childMother = personObject;
 
-    if (personObject === undefined) {
-        return "NONE";
-    }
+    if (personObject === undefined) {return "PERSON_NOT_FOUND";}
 
     if (personObject.gender === "Male") {
         childMother = getSpouseObjectByPerson(personObject);
     }
     let son = [];
-    if (childMother.hasOwnProperty('children') && (childMother !== undefined)) {
+    if ((childMother !== undefined) && (childMother.hasOwnProperty('children'))) {
         son = childMother.children.filter((child) => {
             const thisChild = getUserObjByName(child)[0];
             if(thisChild.gender === "Male") {
@@ -255,15 +258,13 @@ const findDaughter = (pName) => {
     const personObject = getUserObjByName(pName)[0];
     let childMother = personObject;
 
-    if (personObject === undefined) {
-        return "NONE";
-    }
+    if (personObject === undefined) {return "PERSON_NOT_FOUND";}
 
     if (personObject.gender === "Male") {
         childMother = getSpouseObjectByPerson(personObject);
     }
     let daughters = [];
-    if (childMother.hasOwnProperty('children') && (childMother !== undefined)) {
+    if ( (childMother !== undefined) && (childMother.hasOwnProperty('children'))) {
         daughters = childMother.children.filter((child) => {
             const thisChild = getUserObjByName(child)[0];
             if(thisChild.gender === "Female") {
@@ -297,7 +298,7 @@ const getRelationship = (relationItems) => {
         case 'Siblings':
             return findSiblings(relationItems[1]);
         default:
-            return "NONE";
+            return "PERSON_NOT_FOUND";
     }
 }
 
@@ -305,8 +306,13 @@ const loadInitialFamilyTree = () => {
     startLoadInitialFamilyTree(familyMembers);
 }
 
+const getFamilyListSize = () => {
+    return familyMembers.length;
+}
+
 module.exports = {
     addChild,
     getRelationship,
-    loadInitialFamilyTree
+    loadInitialFamilyTree,
+    getFamilyListSize
 }
