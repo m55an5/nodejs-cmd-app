@@ -10,7 +10,8 @@
     "access": "public"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "src/index.js"
   },
   "repository": {
     "type": "git",

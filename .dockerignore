@@ -1,0 +1,11 @@
+# Ignore all files by default
+*
+
+# White list only the required files
+!bin/
+!controller/
+!data/
+!model/
+!src/
+!package.json
+!package-lock.json
