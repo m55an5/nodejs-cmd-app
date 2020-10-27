@@ -23,7 +23,7 @@ docker image build -t family-tree-cli-image .
 
 <b>Run the containe and attached your volume to pass in the text file</b>
 
-docker container run --name family_tree_machine --rm -v /USER/PATH/TO/TEXTFILE.txt:/attached_file.txt family-tree-cli-image
+docker container run --name family_tree_machine --rm -v /USER/PATH/TO/TEXTFILE.txt:/testing.txt family-tree-cli-image
 
 <b>Note:</b> replace /USER/PATH/TO/TEXTFILE.txt with your text file path on your machine
 
