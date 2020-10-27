@@ -17,7 +17,7 @@ cd nodejs-cmd-app/
 
 if you have docker, you can use the following steps to install and run the app in a docker container and pass your text file
 
-<b>Build the Image</b>
+<b>Build the Image (this step also runs npm test)</b>
 
 docker image build -t family-tree-cli-image .
 

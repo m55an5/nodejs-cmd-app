@@ -14,6 +14,8 @@ RUN npm install
 
 COPY --chown=node:node . .
 
+RUN npm test
+
 ENTRYPOINT ["/home/node/app/src/index.js","/testing.txt"]
 
 
